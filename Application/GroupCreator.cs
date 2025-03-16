@@ -49,7 +49,6 @@ namespace Rugby.Application
 
         public static void DisplaySingleGroup(League league)
         {
-            char groupLabel = 'A';
             Console.WriteLine();
             Console.WriteLine("Current League Standings:");
             foreach (var team in league.Teams.OrderByDescending(t => t.LeaguePoints))
@@ -58,6 +57,17 @@ namespace Rugby.Application
             }
             Console.WriteLine();
 
+        }
+
+        public static void DisplayTopTwo(League league)
+        {
+            var topTwoTeams = league.Teams.OrderByDescending(t => t.Score).Take(2);
+
+            Console.WriteLine();
+            foreach (var team in topTwoTeams)
+            {
+                Console.WriteLine($"{team.Name}");
+            }
         }
     }
 }

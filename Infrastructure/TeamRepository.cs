@@ -31,7 +31,7 @@ namespace Rugby.Infrastructure
                 List<Team> teams = new();
                 foreach (var data in teamDataList)
                 {
-                    teams.Add(new Team(data.Nation, data.Coefficient));
+                    teams.Add(new Team(data.Nation, data.Coefficient, data.HomeAdvantageFactor, data.TeamForm));
                 }
 
                 return teams;

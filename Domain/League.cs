@@ -14,14 +14,5 @@ namespace Rugby.Domain
         {
             Teams.Add(team);
         }
-
-        public void DisplayStandings()
-        {
-            Console.WriteLine("League Standings:");
-            foreach (var team in Teams.OrderByDescending(t => t.Score))
-            {
-                Console.WriteLine($"{team.Name}: {team.Score} points");
-            }
-        }
     }
 }

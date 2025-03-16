@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace Rugby.Domain
 {
+    #pragma warning disable CS8618
     public class TeamData
     {
         [JsonPropertyName("nation")]
@@ -14,5 +10,11 @@ namespace Rugby.Domain
 
         [JsonPropertyName("coefficient")]
         public double Coefficient { get; set; }
+
+        [JsonPropertyName("homeAdvantageFactor")]
+        public double HomeAdvantageFactor { get; set; }
+
+        [JsonPropertyName("teamForm")]
+        public double TeamForm { get; set; }
     }
 }

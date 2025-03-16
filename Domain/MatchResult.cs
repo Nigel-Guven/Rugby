@@ -1,4 +1,5 @@
-﻿namespace Rugby.Domain
+﻿
+namespace Rugby.Domain
 {
     public class MatchResult
     {

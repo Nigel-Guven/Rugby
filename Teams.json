@@ -1,130 +1,194 @@
 [
   {
     "nation": "South Africa",
-    "coefficient": 92.78
+    "coefficient": 92.78,
+    "homeAdvantageFactor": 0.8,
+    "teamForm": 1.1 
   },
   {
     "nation": "New Zealand",
-    "coefficient": 90.36
+    "coefficient": 90.36,
+    "homeAdvantageFactor": 1.0,
+    "teamForm": 1.1
   },
   {
     "nation": "Ireland",
-    "coefficient": 89.71
+    "coefficient": 89.71,
+    "homeAdvantageFactor": 0.75,
+    "teamForm": 0.9
   },
   {
     "nation": "France",
-    "coefficient": 89.51
+    "coefficient": 89.51,
+    "homeAdvantageFactor": 0.70,
+    "teamForm": 1.1
   },
   {
     "nation": "Argentina",
-    "coefficient": 84.97
+    "coefficient": 84.97,
+    "homeAdvantageFactor": 0.6,
+    "teamForm": 1.0
   },
   {
     "nation": "England",
-    "coefficient": 84.37
+    "coefficient": 84.37,
+    "homeAdvantageFactor": 0.75,
+    "teamForm": 1.0
   },
   {
     "nation": "Scotland",
-    "coefficient": 82.36
+    "coefficient": 82.36,
+    "homeAdvantageFactor": 0.6,
+    "teamForm": 1.0
   },
   {
     "nation": "Australia",
-    "coefficient": 81.52
+    "coefficient": 81.52,
+    "homeAdvantageFactor": 0.5,
+    "teamForm": 1.0
   },
   {
     "nation": "Fiji",
-    "coefficient": 80.07
+    "coefficient": 80.07,
+    "homeAdvantageFactor": 0.8,
+    "teamForm": 1.0
   },
   {
     "nation": "Italy",
-    "coefficient": 77.89
+    "coefficient": 77.89,
+    "homeAdvantageFactor": 0.77,
+    "teamForm": 1.1
   },
   {
     "nation": "Georgia",
-    "coefficient": 74.69
+    "coefficient": 74.69,
+    "homeAdvantageFactor": 0.78,
+    "teamForm": 1.1
   },
   {
     "nation": "Wales",
-    "coefficient": 73.75
+    "coefficient": 73.75,
+    "homeAdvantageFactor": 0.5,
+    "teamForm": 0.9
   },
   {
     "nation": "Japan",
-    "coefficient": 72.95
+    "coefficient": 72.95,
+    "homeAdvantageFactor": 0.81,
+    "teamForm": 1.0
   },
   {
     "nation": "Samoa",
-    "coefficient": 72.68
+    "coefficient": 72.68,
+    "homeAdvantageFactor": 0.8,
+    "teamForm": 1.0
   },
   {
     "nation": "USA",
-    "coefficient": 70.02
+    "coefficient": 70.02,
+    "homeAdvantageFactor": 0.4,
+    "teamForm": 1.0
   },
   {
     "nation": "Portugal",
-    "coefficient": 68.32
+    "coefficient": 68.32,
+    "homeAdvantageFactor": 0.5,
+    "teamForm": 1.1
   },
   {
     "nation": "Spain",
-    "coefficient": 67.34
+    "coefficient": 67.34,
+    "homeAdvantageFactor": 0.5,
+    "teamForm": 0.9
   },
   {
     "nation": "Uruguay",
-    "coefficient": 67.06
+    "coefficient": 67.06,
+    "homeAdvantageFactor": 0.7,
+    "teamForm": 1.1
   },
   {
     "nation": "Tonga",
-    "coefficient": 65.46
+    "coefficient": 65.46,
+    "homeAdvantageFactor": 0.8,
+    "teamForm": 1.1
   },
   {
     "nation": "Romania",
-    "coefficient": 62.76
+    "coefficient": 62.76,
+    "homeAdvantageFactor": 0.4,
+    "teamForm": 0.9
   },
   {
     "nation": "Chile",
-    "coefficient": 61.72
+    "coefficient": 61.72,
+    "homeAdvantageFactor": 0.8,
+    "teamForm": 1.0
   },
   {
     "nation": "Hong Kong",
-    "coefficient": 59.49
+    "coefficient": 59.49,
+    "homeAdvantageFactor": 0.4,
+    "teamForm": 0.9
   },
   {
     "nation": "Canada",
-    "coefficient": 59.18
+    "coefficient": 59.18,
+    "homeAdvantageFactor": 0.7,
+    "teamForm": 1.1
   },
   {
     "nation": "Netherlands",
-    "coefficient": 59.16
+    "coefficient": 59.16,
+    "homeAdvantageFactor": 0.4,
+    "teamForm": 0.9
   },
   {
     "nation": "Namibia",
-    "coefficient": 57.87
+    "coefficient": 57.87,
+    "homeAdvantageFactor": 0.85,
+    "teamForm": 1.0
   },
   {
     "nation": "Belgium",
-    "coefficient": 57.83
+    "coefficient": 57.83,
+    "homeAdvantageFactor": 0.4,
+    "teamForm": 1.0
   },
   {
     "nation": "Zimbabwe",
-    "coefficient": 57.16
+    "coefficient": 57.16,
+    "homeAdvantageFactor": 0.8,
+    "teamForm": 0.9
   },
   {
     "nation": "Brazil",
-    "coefficient": 56.53
+    "coefficient": 56.53,
+    "homeAdvantageFactor": 0.75,
+    "teamForm": 1.0
   },
   {
     "nation": "Switzerland",
-    "coefficient": 54.24
+    "coefficient": 54.24,
+    "homeAdvantageFactor": 0.4,
+    "teamForm": 1.0
   },
   {
     "nation": "Sweden",
-    "coefficient": 54.10
+    "coefficient": 54.10,
+    "homeAdvantageFactor": 0.6,
+    "teamForm": 1.0
   },
   {
     "nation": "Russia",
-    "coefficient": 52.06
+    "coefficient": 52.06,
+    "homeAdvantageFactor": 0.69,
+    "teamForm": 0.9
   },
   {
     "nation": "Poland",
-    "coefficient": 52.01
+    "coefficient": 52.01,
+    "homeAdvantageFactor": 0.5,
+    "teamForm": 1.0
   }
 ]

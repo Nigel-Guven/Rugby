@@ -23,7 +23,7 @@ namespace Rugby
 
             foreach(League group in groups)
             {
-
+                GroupCreator.DisplayTopTwo(group);
             }
         }
     }

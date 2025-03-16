@@ -1,4 +1,5 @@
 ﻿using Rugby.Domain;
+
 namespace Rugby.Application
 {
     public class TablePointsCreator

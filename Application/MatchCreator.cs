@@ -69,29 +69,32 @@ namespace Rugby.Application
 
         private static MatchResult GenerateMatchScore(Team homeTeam, Team awayTeam)
         {
+            Random random = new();
+
             // Step 1: Calculate base scores based on coefficients
             double homeBaseScore = homeTeam.Coefficient * 0.5; // Adjust the coefficient for a base score
             double awayBaseScore = awayTeam.Coefficient * 0.5; // Adjust the coefficient for a base score
 
             // Step 2: Apply home advantage bonus to the home team
-            homeBaseScore += homeBaseScore * HomeAdvantageBonus;
+            homeBaseScore += homeBaseScore * (HomeAdvantageBonus + homeTeam.HomeAdvantageFactor);
+            awayBaseScore += awayBaseScore * (awayTeam.HomeAdvantageFactor);
 
             // Step 3: Add luck factor (random) to both teams
-            double homeLuckFactor = GetLuckFactor();
-            double awayLuckFactor = GetLuckFactor();
+            double homeLuckFactor = GetLuckFactor(random, homeTeam.TeamForm);
+            double awayLuckFactor = GetLuckFactor(random, awayTeam.TeamForm);
 
             homeBaseScore *= homeLuckFactor;
             awayBaseScore *= awayLuckFactor;
 
             // Step 4: Generate tries, conversions, and penalties for each team
-            int homeTries = GenerateTries(homeBaseScore);
-            int awayTries = GenerateTries(awayBaseScore);
+            int homeTries = GenerateTries(random, homeBaseScore);
+            int awayTries = GenerateTries(random, awayBaseScore);
 
             int homeConversions = homeTries; // Assuming 1 conversion for each try
             int awayConversions = awayTries; // Assuming 1 conversion for each try
 
-            int homePenalties = GeneratePenalties(homeBaseScore);
-            int awayPenalties = GeneratePenalties(awayBaseScore);
+            int homePenalties = GeneratePenalties(random, homeBaseScore);
+            int awayPenalties = GeneratePenalties(random, awayBaseScore);
 
             // Step 5: Calculate the total score for each team (if needed for debugging or output)
             int homeTeamScore = (homeTries * 5) + (homeConversions * 2) + (homePenalties * 3);
@@ -112,24 +115,24 @@ namespace Rugby.Application
         }
 
         // Generate random luck factor for a team (Good or Bad day)
-        private static double GetLuckFactor()
+        private static double GetLuckFactor(Random random, double teamForm)
         {
-            Random random = new();
-            return random.NextDouble() * (LuckFactorMax - LuckFactorMin) + LuckFactorMin;
+            double luck = random.NextDouble() * (LuckFactorMax - LuckFactorMin) + LuckFactorMin;
+            return luck * teamForm;
         }
 
         // Generate number of tries based on team's base strength
-        private static int GenerateTries(double baseScore)
+        private static int GenerateTries(Random random, double baseScore)
         {
-            Random random = new();
-            return (int)(baseScore / 10) + random.Next(0, 3); // Random between 0-3 tries
+            int maxTries = (int)(baseScore / 10); // More tries for stronger teams
+            return random.Next(0, maxTries + 1); // Random between 0-3 tries
         }
 
         // Generate number of penalties based on team's base strength
-        private static int GeneratePenalties(double baseScore)
+        private static int GeneratePenalties(Random random, double baseScore)
         {
-            Random random = new();
-            return (int)(baseScore / 15) + random.Next(0, 3); // Random between 0-3 penalties
+            int maxPenalties = (int)(baseScore / 15);
+            return random.Next(0, maxPenalties + 1); // Random between 0-3 penalties
         }
     }
 }

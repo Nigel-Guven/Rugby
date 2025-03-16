@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rugby", "Rugby.csproj", "{F043C677-FBB5-4DA1-BAAF-A554F9870301}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rugby", "Rugby.csproj", "{F043C677-FBB5-4DA1-BAAF-A554F9870301}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{02BC90AD-0C47-4704-8624-E84A585AFF83}"
 EndProject
@@ -13,8 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TeamsRanking", "TeamsRankin
 	ProjectSection(SolutionItems) = preProject
 		Teams.json = Teams.json
 	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GroupTables", "GroupTables", "{3C6071D1-0481-426E-B1B8-5C39A885C5DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,7 +31,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C5675646-A5EF-46A5-974E-9E0A54813858} = {02BC90AD-0C47-4704-8624-E84A585AFF83}
 		{F5AC2A4D-4771-446B-9227-AA02B45E82D4} = {C5675646-A5EF-46A5-974E-9E0A54813858}
-		{3C6071D1-0481-426E-B1B8-5C39A885C5DE} = {C5675646-A5EF-46A5-974E-9E0A54813858}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99CCCE4D-F068-4174-8349-8E9C4D22F090}
