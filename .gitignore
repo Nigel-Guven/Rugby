@@ -9,3 +9,5 @@ bin*
 *.pdb
 *.dll
 /.vs
+/obj
+/.vs
