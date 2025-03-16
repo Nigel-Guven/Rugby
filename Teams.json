@@ -1,0 +1,130 @@
+[
+  {
+    "nation": "South Africa",
+    "coefficient": 92.78
+  },
+  {
+    "nation": "New Zealand",
+    "coefficient": 90.36
+  },
+  {
+    "nation": "Ireland",
+    "coefficient": 89.71
+  },
+  {
+    "nation": "France",
+    "coefficient": 89.51
+  },
+  {
+    "nation": "Argentina",
+    "coefficient": 84.97
+  },
+  {
+    "nation": "England",
+    "coefficient": 84.37
+  },
+  {
+    "nation": "Scotland",
+    "coefficient": 82.36
+  },
+  {
+    "nation": "Australia",
+    "coefficient": 81.52
+  },
+  {
+    "nation": "Fiji",
+    "coefficient": 80.07
+  },
+  {
+    "nation": "Italy",
+    "coefficient": 77.89
+  },
+  {
+    "nation": "Georgia",
+    "coefficient": 74.69
+  },
+  {
+    "nation": "Wales",
+    "coefficient": 73.75
+  },
+  {
+    "nation": "Japan",
+    "coefficient": 72.95
+  },
+  {
+    "nation": "Samoa",
+    "coefficient": 72.68
+  },
+  {
+    "nation": "USA",
+    "coefficient": 70.02
+  },
+  {
+    "nation": "Portugal",
+    "coefficient": 68.32
+  },
+  {
+    "nation": "Spain",
+    "coefficient": 67.34
+  },
+  {
+    "nation": "Uruguay",
+    "coefficient": 67.06
+  },
+  {
+    "nation": "Tonga",
+    "coefficient": 65.46
+  },
+  {
+    "nation": "Romania",
+    "coefficient": 62.76
+  },
+  {
+    "nation": "Chile",
+    "coefficient": 61.72
+  },
+  {
+    "nation": "Hong Kong",
+    "coefficient": 59.49
+  },
+  {
+    "nation": "Canada",
+    "coefficient": 59.18
+  },
+  {
+    "nation": "Netherlands",
+    "coefficient": 59.16
+  },
+  {
+    "nation": "Namibia",
+    "coefficient": 57.87
+  },
+  {
+    "nation": "Belgium",
+    "coefficient": 57.83
+  },
+  {
+    "nation": "Zimbabwe",
+    "coefficient": 57.16
+  },
+  {
+    "nation": "Brazil",
+    "coefficient": 56.53
+  },
+  {
+    "nation": "Switzerland",
+    "coefficient": 54.24
+  },
+  {
+    "nation": "Sweden",
+    "coefficient": 54.10
+  },
+  {
+    "nation": "Russia",
+    "coefficient": 52.06
+  },
+  {
+    "nation": "Poland",
+    "coefficient": 52.01
+  }
+]
