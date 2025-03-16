@@ -94,12 +94,15 @@ namespace Rugby.Application
             double awayTeamYellowCardBoost = awayTeamYellowCard ? 1.5 : 1.0;  // 1.5x chance for home team to score
 
             // Step 6: Implement trashing logic for teams with high coefficients
-            double trashingThresholdHigh = 81.00;  // Coefficient threshold for high-performing teams
-            double trashingThresholdLow = 57.87;  // Coefficient threshold for low-performing teams
-            double trashingFactor = 3.0;  // Boost multiplier for a trashing scenario
+            double trashingThresholdHigh = 80.00;  // Coefficient threshold for high-performing teams
+            double trashingThresholdLow = 60.00;  // Coefficient threshold for low-performing teams
+            double trashingFactor = 1.8;  // Boost multiplier for a trashing scenario
 
-            bool isHomeTeamTrash = homeTeam.Coefficient > trashingThresholdHigh && homeBaseScore > awayBaseScore * 1.5;  // Significant advantage for home team
-            bool isAwayTeamTrash = awayTeam.Coefficient > trashingThresholdHigh && awayBaseScore > homeBaseScore * 1.5;  // Significant advantage for away team
+            bool isHomeTeamTrash = homeTeam.Coefficient > trashingThresholdHigh && homeBaseScore > awayBaseScore * 1.3;  // Significant advantage for home team
+            bool isAwayTeamTrash = awayTeam.Coefficient > trashingThresholdHigh && awayBaseScore > homeBaseScore * 1.2;  // Significant advantage for away team
+
+            bool isLowHomeTeam = homeTeam.Coefficient < trashingThresholdLow;  // Low coefficient for home team
+            bool isLowAwayTeam = awayTeam.Coefficient < trashingThresholdLow;  // Low coefficient for away team
 
             // Trashing conditions: if a stronger team faces a weaker team, they dominate
             if (isHomeTeamTrash)
@@ -114,20 +117,51 @@ namespace Rugby.Application
                 awayBaseScore *= trashingFactor;  // Significantly boost away team's score
                 homeBaseScore = Math.Min(homeBaseScore, 5);  // Home team scores very little or nothing
             }
+            else if (isLowHomeTeam)
+            {
+                // Low-performing home team scenario
+                homeBaseScore = Math.Min(homeBaseScore, 10);  // Limit home team's score if they're low-performing
+                awayBaseScore *= 1.2;  // Boost away team's chances of scoring if the home team is low-performing
+            }
+            else if (isLowAwayTeam)
+            {
+                // Low-performing away team scenario
+                awayBaseScore = Math.Min(awayBaseScore, 10);  // Limit away team's score if they're low-performing
+                homeBaseScore *= 1.2;  // Boost home team's chances of scoring if the away team is low-performing
+            }
 
-            // Limit the maximum score for the stronger team in a trashing scenario to a reasonable cap
-            homeBaseScore = Math.Min(homeBaseScore, 85);  // Cap the stronger team's score to 50 points
-            awayBaseScore = Math.Min(awayBaseScore, 12);   // Cap the weaker team's score to 5 points (or 0 if you prefer)
+            // Step 7: Add shock win scenario for underdog team
+            // Calculate the coefficient difference
+            double coefficientDifference = Math.Abs(homeTeam.Coefficient - awayTeam.Coefficient);
 
-            // Step 7: Generate tries, conversions, and penalties for each team
-            int homeTries = GenerateTries(random, homeBaseScore * awayTeamYellowCardBoost);
-            int awayTries = GenerateTries(random, awayBaseScore * homeTeamYellowCardBoost);
+            // Chance of a shock win: If coefficient difference is large enough, chance is small but non-zero
+            double shockWinChance = 0.10;  // 5% chance of shock win for underdog
 
-            int homeConversions = homeTries; // Assuming 1 conversion for each try
-            int awayConversions = awayTries; // Assuming 1 conversion for each try
+            // If coefficient difference is large, increase shock win chance
+            if (coefficientDifference > 12)  // Threshold for significant coefficient difference
+            {
+                shockWinChance = 0.1;  // Increase chance to 10%
+            }
 
-            int homePenalties = GeneratePenalties(random, homeBaseScore);
-            int awayPenalties = GeneratePenalties(random, awayBaseScore);
+            // Randomly determine if the underdog wins
+            bool shockWin = random.NextDouble() < shockWinChance;
+            Console.WriteLine(shockWin);
+            // Apply shock win effect to tries, conversions, and penalties
+            double shockFactor = shockWin ? 3.0 : 1.0;
+
+            // Step 8: Limit the maximum score for the stronger team in a trashing scenario to a reasonable cap
+            homeBaseScore = Math.Min(homeBaseScore, 50);  // Cap the stronger team's score to X points
+            awayBaseScore = Math.Min(awayBaseScore, 12);   // Cap the weaker team's score to X points
+
+            // Step 9: Generate tries, conversions, and penalties for each team
+            int homeTries = GenerateTries(random, homeBaseScore * awayTeamYellowCardBoost) * (int)shockFactor;
+            int awayTries = GenerateTries(random, awayBaseScore * homeTeamYellowCardBoost) * (int)shockFactor;
+
+            int homeConversions = homeTries * (int)shockFactor; // Assuming 1 conversion for each try
+            int awayConversions = awayTries * (int)shockFactor; // Assuming 1 conversion for each try
+
+            int homePenalties = GeneratePenalties(random, homeBaseScore) * (int)shockFactor;
+            int awayPenalties = GeneratePenalties(random, awayBaseScore) * (int)shockFactor;
 
             // Step 7: Calculate the total score for each team (if needed for debugging or output)
             int homeTeamScore = (homeTries * 5) + (homeConversions * 2) + (homePenalties * 3);

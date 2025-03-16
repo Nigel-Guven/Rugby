@@ -8,25 +8,54 @@ namespace Rugby.Application
         {
             var sortedTeams = teams.OrderByDescending(t => t.Coefficient).ToList();
 
-            List<League> leagues = new List<League>
-            {
-                new League(), // Group A
-                new League(), // Group B
-                new League(), // Group C
-                new League(), // Group D
-                new League(), // Group E
-                new League(), // Group F
-                new League(), // Group G
-                new League()  // Group H
-            };
+            League league = new League();
 
-            for (int i = 0; i < sortedTeams.Count; i++)
+            for (int i = 0; i < sortedTeams.Count; i ++)
             {
-                int groupIndex = i % 8; 
-                leagues[groupIndex].AddTeam(sortedTeams[i]);
+                league.AddTeam(sortedTeams.ElementAt(i));
             }
 
-            if(shouldPrint) 
+            List<League> leagues = new List<League>
+            {
+                league, // Group A
+                //new League(), // Group B
+                //new League(), // Group C
+                //new League(), // Group D
+                //new League(), // Group E
+                //new League(), // Group F
+                //new League(), // Group G
+                //new League()  // Group H
+            };
+
+            /*
+            List<List<Team>> rankBands = new List<List<Team>>();
+            for (int i = 0; i < sortedTeams.Count; i += 8)
+            {
+                var rankBand = sortedTeams.Skip(i).Take(8).ToList();
+                rankBands.Add(rankBand);
+            }
+
+            // Step 4: Randomly shuffle each rank band to ensure randomness
+            Random random = new Random();
+            for (int i = 0; i < rankBands.Count; i++)
+            {
+                rankBands[i] = rankBands[i].OrderBy(x => random.Next()).ToList(); // Shuffle each rank band
+            }
+
+            int groupIndex = 0;
+            foreach (var rankBand in rankBands)
+            {
+                foreach (var team in rankBand)
+                {
+                    // Distribute teams from each rank band to each group
+                    leagues[groupIndex].AddTeam(team);
+                    groupIndex = (groupIndex + 1) % 8;  // Wrap around after the 8th group
+                }
+            }*/
+
+
+
+            if (shouldPrint) 
                 DisplayGroups(leagues);
 
             return leagues;
