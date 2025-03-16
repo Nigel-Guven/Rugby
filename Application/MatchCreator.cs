@@ -86,9 +86,42 @@ namespace Rugby.Application
             homeBaseScore *= homeLuckFactor;
             awayBaseScore *= awayLuckFactor;
 
-            // Step 4: Generate tries, conversions, and penalties for each team
-            int homeTries = GenerateTries(random, homeBaseScore);
-            int awayTries = GenerateTries(random, awayBaseScore);
+            // Step 4: Check for yellow cards
+            var (homeTeamYellowCard, awayTeamYellowCard) = GetYellowCards(random);
+
+            // Step 5: Adjust scoring chances based on yellow cards
+            double homeTeamYellowCardBoost = homeTeamYellowCard ? 1.5 : 1.0;  // 1.5x chance for away team to score
+            double awayTeamYellowCardBoost = awayTeamYellowCard ? 1.5 : 1.0;  // 1.5x chance for home team to score
+
+            // Step 6: Implement trashing logic for teams with high coefficients
+            double trashingThresholdHigh = 81.00;  // Coefficient threshold for high-performing teams
+            double trashingThresholdLow = 57.87;  // Coefficient threshold for low-performing teams
+            double trashingFactor = 3.0;  // Boost multiplier for a trashing scenario
+
+            bool isHomeTeamTrash = homeTeam.Coefficient > trashingThresholdHigh && homeBaseScore > awayBaseScore * 1.5;  // Significant advantage for home team
+            bool isAwayTeamTrash = awayTeam.Coefficient > trashingThresholdHigh && awayBaseScore > homeBaseScore * 1.5;  // Significant advantage for away team
+
+            // Trashing conditions: if a stronger team faces a weaker team, they dominate
+            if (isHomeTeamTrash)
+            {
+                // Home team is trashing away team
+                homeBaseScore *= trashingFactor;  // Significantly boost home team's score
+                awayBaseScore = Math.Min(awayBaseScore, 5);  // Away team scores very little or nothing
+            }
+            else if (isAwayTeamTrash)
+            {
+                // Away team is trashing home team
+                awayBaseScore *= trashingFactor;  // Significantly boost away team's score
+                homeBaseScore = Math.Min(homeBaseScore, 5);  // Home team scores very little or nothing
+            }
+
+            // Limit the maximum score for the stronger team in a trashing scenario to a reasonable cap
+            homeBaseScore = Math.Min(homeBaseScore, 85);  // Cap the stronger team's score to 50 points
+            awayBaseScore = Math.Min(awayBaseScore, 12);   // Cap the weaker team's score to 5 points (or 0 if you prefer)
+
+            // Step 7: Generate tries, conversions, and penalties for each team
+            int homeTries = GenerateTries(random, homeBaseScore * awayTeamYellowCardBoost);
+            int awayTries = GenerateTries(random, awayBaseScore * homeTeamYellowCardBoost);
 
             int homeConversions = homeTries; // Assuming 1 conversion for each try
             int awayConversions = awayTries; // Assuming 1 conversion for each try
@@ -96,7 +129,7 @@ namespace Rugby.Application
             int homePenalties = GeneratePenalties(random, homeBaseScore);
             int awayPenalties = GeneratePenalties(random, awayBaseScore);
 
-            // Step 5: Calculate the total score for each team (if needed for debugging or output)
+            // Step 7: Calculate the total score for each team (if needed for debugging or output)
             int homeTeamScore = (homeTries * 5) + (homeConversions * 2) + (homePenalties * 3);
             int awayTeamScore = (awayTries * 5) + (awayConversions * 2) + (awayPenalties * 3);
 
@@ -133,6 +166,17 @@ namespace Rugby.Application
         {
             int maxPenalties = (int)(baseScore / 15);
             return random.Next(0, maxPenalties + 1); // Random between 0-3 penalties
+        }
+
+        private static (bool homeTeamYellowCard, bool awayTeamYellowCard) GetYellowCards(Random random)
+        {
+            // Define chance of a yellow card for each team
+            double yellowCardChance = 0.08; // 10% chance of getting a yellow card
+
+            bool homeTeamYellowCard = random.NextDouble() < yellowCardChance;
+            bool awayTeamYellowCard = random.NextDouble() < yellowCardChance;
+
+            return (homeTeamYellowCard, awayTeamYellowCard);
         }
     }
 }

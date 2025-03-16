@@ -6,3 +6,6 @@
 .vs*
 bin*
 .vs/Rugby/v17/.suo
+*.pdb
+*.dll
+/.vs
