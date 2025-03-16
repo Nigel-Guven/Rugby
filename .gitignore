@@ -3,3 +3,5 @@
 .vs\*
 .vs/Rugby/FileContentIndex/39dd04c8-e437-4624-a9b0-baf678a82700.vsidx
 .vs/Rugby/v17/.suo
+.vs*
+bin*
