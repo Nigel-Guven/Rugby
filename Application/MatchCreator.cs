@@ -36,7 +36,10 @@ namespace Rugby.Application
                     Team homeTeam = teams[i];
                     Team awayTeam = teams[teams.Count - 1 - i];
 
+                    Console.WriteLine();
                     Console.WriteLine($"Match: {homeTeam.Name} vs {awayTeam.Name}");
+                    Console.WriteLine();
+
                     var result = GenerateMatchScore(homeTeam, awayTeam);
                     
 
@@ -47,7 +50,7 @@ namespace Rugby.Application
 
                     Console.WriteLine($"{result.FirstTeam.Name} {result.FirstTeamTotalScore} - {result.SecondTeamTotalScore} {result.SecondTeam.Name}");
 
-                    GroupCreator.DisplaySingleGroup(league);
+                    
                 }
 
                 // Rotate the teams (keeping the first team fixed, rotating the others)
@@ -58,6 +61,8 @@ namespace Rugby.Application
                 }
                 teams[teams.Count - 1] = temp;
 
+
+                GroupCreator.DisplaySingleGroup(league);
                 Console.WriteLine(); // Break Line between rounds
             }
         }

@@ -50,12 +50,13 @@ namespace Rugby.Application
         public static void DisplaySingleGroup(League league)
         {
             char groupLabel = 'A';
-
+            Console.WriteLine();
             Console.WriteLine("Current League Standings:");
             foreach (var team in league.Teams.OrderByDescending(t => t.LeaguePoints))
             {
                 Console.WriteLine($"{team.Name}: {team.LeaguePoints} points");
             }
+            Console.WriteLine();
 
         }
     }
