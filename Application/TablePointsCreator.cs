@@ -8,26 +8,21 @@ namespace Rugby.Application
             var homeTeamScore = matchResult.FirstTeamPenalties * 3 + matchResult.FirstTeamTries * 5 + matchResult.FirstTeamConversions * 2;
             var awayTeamScore = matchResult.SecondTeamPenalties * 3 + matchResult.SecondTeamTries * 5 + matchResult.SecondTeamConversions * 2;
 
-            var homePoints = 0;
-            var awayPoints = 0;
+            int homePoints = 0;
+            int awayPoints = 0;
 
             // Determine if there's a winner or a draw
             if (homeTeamScore > awayTeamScore)
             {
-                // Team1 wins
-                homePoints = 4;
-                awayPoints = 0;
+                homePoints = 4; // Home team wins
             }
             else if (awayTeamScore > homeTeamScore)
             {
-                // Team2 wins
-                homePoints = 0;
-                awayPoints = 4;
+                awayPoints = 4; // Away team wins
             }
             else
             {
-                // It's a draw
-                homePoints = 2;
+                homePoints = 2; // It's a draw
                 awayPoints = 2;
             }
 
