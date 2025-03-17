@@ -4,8 +4,8 @@ using Rugby.Infrastructure;
 
 namespace Rugby
 {
-#pragma warning disable CS8600
-#pragma warning disable CS8604
+    #pragma warning disable CS8600
+    #pragma warning disable CS8604
     public class Program
     {
         static void Main(string[] args)

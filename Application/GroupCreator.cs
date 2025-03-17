@@ -10,12 +10,19 @@ namespace Rugby.Application
 
             League league = new League();
 
-            for (int i = 0; i < sortedTeams.Count; i ++)
+            for (int i = 0; i < 12; i ++)
             {
                 league.AddTeam(sortedTeams.ElementAt(i));
             }
 
-            List<League> leagues = new List<League>
+            league.RemoveTeamByName("South Africa");
+            league.RemoveTeamByName("New Zealand");
+            league.RemoveTeamByName("Argentina");
+            league.RemoveTeamByName("Australia");
+            league.RemoveTeamByName("Fiji");
+            league.RemoveTeamByName("Georgia");
+
+            List<League> leagues = new()
             {
                 league, // Group A
                 //new League(), // Group B
